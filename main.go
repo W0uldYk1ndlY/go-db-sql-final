@@ -100,12 +100,13 @@ func main() {
 	// настройте подключение к БД
 	db, err := sql.Open("sqlite", "tracker.db")
 	if err != nil {
-		fmt.Println(err)
+		panic(err)
 	}
 
 	// создайте объект ParcelStore функцией NewParcelStore
 	store := NewParcelStore(db)
 	service := NewParcelService(store)
+	defer store.db.Close()
 
 	// регистрация посылки
 	client := 1
