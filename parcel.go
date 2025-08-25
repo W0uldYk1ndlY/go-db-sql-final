@@ -42,7 +42,7 @@ func (s ParcelStore) Get(number int) (Parcel, error) {
 
 	err := res.Scan(&parcel.Number, &parcel.Client, &parcel.Status, &parcel.Address, &parcel.CreatedAt)
 	if err != nil {
-		return Parcel{}, nil
+		return Parcel{}, err
 	}
 
 	return parcel, nil

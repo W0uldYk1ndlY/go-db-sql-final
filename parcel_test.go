@@ -41,6 +41,7 @@ func TestAddGetDelete(t *testing.T) {
 	// add
 	number, err := store.Add(parcel)
 	require.NoError(t, err)
+	require.Greater(t, number, 0)
 	parcel.Number = number
 
 	// get
@@ -62,7 +63,6 @@ func TestAddGetDelete(t *testing.T) {
 
 	res, err = store.Get(number)
 	require.Error(t, err)
-	require.Empty(t, res)
 }
 
 // TestSetAddress проверяет обновление адреса
